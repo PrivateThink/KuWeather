@@ -1,7 +1,11 @@
 package com.kuweather.app.activity;
 
 
+import net.youmi.android.banner.AdSize;
+import net.youmi.android.banner.AdView;
+
 import com.kuweather.app.R;
+import com.kuweather.app.service.AutoUpdateService;
 import com.kuweather.app.util.HttpCallbackListener;
 import com.kuweather.app.util.HttpUtil;
 import com.kuweather.app.util.Utility;
@@ -75,6 +79,15 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			showWeather();
 		}
 		
+		
+		// 实例化广告条
+		AdView adView = new AdView(this, AdSize.FIT_SCREEN);
+
+		// 获取要嵌入广告条的布局
+		LinearLayout adLayout=(LinearLayout)findViewById(R.id.adLayout);
+
+		// 将广告条加入到布局中
+		adLayout.addView(adView);
 	}
 
 
@@ -115,6 +128,10 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		
+		//启动自动更新天气服务
+		Intent intent=new Intent(this,AutoUpdateService.class);
+		startService(intent);
 		
 	}
 	/**

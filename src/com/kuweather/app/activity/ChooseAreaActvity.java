@@ -3,16 +3,7 @@ package com.kuweather.app.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kuweather.app.R;
-import com.kuweather.app.db.CoolWeatherDB;
-import com.kuweather.app.model.City;
-import com.kuweather.app.model.County;
-import com.kuweather.app.model.Province;
-import com.kuweather.app.util.HttpCallbackListener;
-import com.kuweather.app.util.HttpUtil;
-import com.kuweather.app.util.Utility;
-
-import android.R.integer;
+import net.youmi.android.AdManager;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,6 +19,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.kuweather.app.R;
+import com.kuweather.app.db.CoolWeatherDB;
+import com.kuweather.app.model.City;
+import com.kuweather.app.model.County;
+import com.kuweather.app.model.Province;
+import com.kuweather.app.util.HttpCallbackListener;
+import com.kuweather.app.util.HttpUtil;
+import com.kuweather.app.util.Utility;
 
 public class ChooseAreaActvity extends Activity{
 
@@ -61,6 +61,9 @@ public class ChooseAreaActvity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
+		//初始化有米广告
+		AdManager.getInstance(this).init("bb2a6e61ec380c68", "00b6d9c7e56726de", false);
+		
 		isFromWeatherActivity=getIntent().getBooleanExtra("from_weather_activity", false);
 		
 		
